@@ -79,12 +79,13 @@ Describe "End to End Tests" {
 
     It "should check the web app has a host name" {
       # act and assert
-      $defaultHostName = $webAppResource.ResourceDetails.DefaultHostName
-      $defaultHostName | Should -Not -Be $null
+      $webAppResource = Confirm-AzBPWebApp $appServiceName $appServiceResourceGroupName
+      $webAppResource.ResourceDetails.DefaultHostName | Should -Not -Be $null
     }
 
     It "should check the web app works" {
       # act and assert
+      $webAppResource = Confirm-AzBPWebApp $appServiceName $appServiceResourceGroupName
       $defaultHostName = $webAppResource.ResourceDetails.DefaultHostName
       $response = Invoke-RestMethod -Uri "http://$defaultHostName" -Method 'Get' -TimeoutSec 240
       $response | Should -Not -Be $null
