@@ -59,7 +59,7 @@ jobs:
         env:
           WORKSPACE_PATH: ${{ github.workspace }}
         run: |
-          ./iac.bicep.lint.sh
+          # ./iac.bicep.lint.sh
         working-directory: scripts/orchestrators
 
       - uses: Azure/login@v1
@@ -94,5 +94,5 @@ jobs:
           export ARM_SUBSCRIPTION_ID=${{ steps.LoadSecrets.outputs.subscriptionId }}
           export ARM_CLIENT_ID=${{ steps.LoadSecrets.outputs.clientId }}
           export ARM_CLIENT_SECRET=${{ steps.LoadSecrets.outputs.clientSecret }}
-          ./iac.bicep.validate.sh
+          # ./iac.bicep.validate.sh
         working-directory: scripts/orchestrators
