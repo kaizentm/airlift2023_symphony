@@ -6,10 +6,10 @@ param layerName=readEnvironmentVariable('layerName')
 
 param appSvcPlanSkuName='S1'
 param appSvcPlanSkuTier='Standard'
-param appSvcDockerImage='crsymphony360.azurecr.io/eshopwebmvc'
+param appSvcDockerImage='crbovuvxqy267.azurecr.io/eshopwebmvc'
 param appSvcDockerImageTag='a72dd77'
-param containerRegistryResourceGroupName='devops-symphony-362'
-param containerRegistryName='crsymphony360'
+param containerRegistryResourceGroupName='rg-bovuvxqy-267'
+param containerRegistryName='crbovuvxqy267'
 param sqlDatabaseCatalogDbName=readEnvironmentVariable('sqlDatabaseCatalogDbName')
 param sqlDatabaseIdentityDbName=readEnvironmentVariable('sqlDatabaseIdentityDbName')
 param sqlServerFqdn=readEnvironmentVariable('sqlServerFqdn')
