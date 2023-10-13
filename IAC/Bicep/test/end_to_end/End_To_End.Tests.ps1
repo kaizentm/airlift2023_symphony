@@ -44,6 +44,10 @@ Describe "End to End Tests" {
       # act and assert
       $webAppResource = Confirm-AzBPWebApp $appServiceName $appServiceResourceGroupName
       $webAppResource.ResourceDetails.State | Should -Be "Running"
+      $webAppResource.ResourceDetails.SiteConfig.ConnectionStrings | Should -Not -Be $null
+      $webAppResource.ResourceDetails.SiteConfig.ConnectionStrings.Count | Should -Be 2
+      $webAppResource.ResourceDetails.SiteConfig.ConnectionStrings | Where-Object { $_.name -eq 'CatalogConnection' } | Select-Object -ExpandProperty ConnectionString | Should -Contain "$sqlServerName"
+      $webAppResource.ResourceDetails.SiteConfig.ConnectionStrings | Where-Object { $_.name -eq 'IdentityConnection' } | Select-Object -ExpandProperty ConnectionString | Should -Contain "$sqlServerName"
 
       # act and assert
       $defaultHostName = $webAppResource.ResourceDetails.DefaultHostName
